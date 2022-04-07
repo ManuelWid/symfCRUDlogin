@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2 class="page-header"> Hotel - Rooms </h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Size</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for room in rooms %}
+            <tr>
+                <td>{{room.roomNr}}</td>
+                <td>{{room.size}}</td>
+                <td>{{room.price}}</td>
+                <td>{{room.description}}</td>
+                <td>{{room.fkStatus.name}}</td>
+                <td> <a href="{{ path('app_details', {'id': room.id}) }}" class="btn btn-success">View</a>
+                    {% if app.user %}
+                        {% if app.user.roles[0] == "ROLE_ADMIN" %}
+                            <a href="{{ path('app_edit', {'id': room.id}) }}" class="btn btn-warning">Edit</a>
+                            <a href="{{ path('app_delete', {'id': room.id}) }}" class="btn btn-danger">Delete</a>
+                        {% endif %}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

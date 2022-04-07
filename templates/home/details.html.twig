@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<h2 class="page-header">Room number {{room.roomNr}}</h2>
+<ul class="list-group">
+    <li class="list-group-item">Size: {{room.size}}</li>
+    <li class="list-group-item">Description: {{room.description}}</li>
+    <li class="list-group-item">Price: {{room.price}}</li>
+    <li class="list-group-item">Description: {{room.description}}</li>
+</ul>
+<p>
+    {{room.fkStatus.name}}
+</p>
+{% endblock %}
