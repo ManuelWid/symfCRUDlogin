@@ -17,6 +17,13 @@ class CrudController extends AbstractController
  * @Route("/crud")
  */
 {
+    public function adminOnly(): Response
+    {
+        if($this->getUser()->getRoles()[0] != "ROLE_ADMIN"){
+            return $this->redirectToRoute('app_home');
+        }
+    }
+    
     /**
      * @Route("/create", name="app_create")
      */

@@ -1,14 +1,11 @@
-{% extends "base.html.twig" %}
-
-{% block body %}
+{% extends "base.html.twig" %} {% block body %}
 <h2 class="page-header">Room number {{room.roomNr}}</h2>
 <ul class="list-group">
     <li class="list-group-item">Size: {{room.size}}</li>
     <li class="list-group-item">Description: {{room.description}}</li>
     <li class="list-group-item">Price: {{room.price}}</li>
     <li class="list-group-item">Description: {{room.description}}</li>
+    <li class="list-group-item">Status: {{room.fkStatus.name}}</li>
 </ul>
-<p>
-    {{room.fkStatus.name}}
-</p>
+<img src="{{ asset('pictures/' ~ room.picture) }}" width="250px">
 {% endblock %}
